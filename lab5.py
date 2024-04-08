@@ -15,7 +15,7 @@ for root1, dirs1, files1 in os.walk("./test"):
                 for line in lines:
                     dfTest = dfTest._append({'phrase': line, 'sentiment': os.path.basename(root1)}, ignore_index=True)
 #export a test_dataset.csv
-dfTest.to_csv('test_dataset.csv')
+dfTest.to_csv('test_dataset.csv', index=False)
 
 for root2, dirs2, files2 in os.walk("./train"):
     for file2 in files2:
@@ -24,6 +24,9 @@ for root2, dirs2, files2 in os.walk("./train"):
                 lines = f.readlines()
                 for line in lines:
                     dfTrain = dfTrain._append({'phrase': line, 'sentiment': os.path.basename(root2)}, ignore_index=True)
+#quitale el nombre a la primera columna
+
+
 
 #export a train_dataset.csv
-dfTrain.to_csv('train_dataset.csv')
+dfTrain.to_csv('train_dataset.csv', index=False)
